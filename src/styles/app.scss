@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+form {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 2px solid black;
+	padding: 10px;
+	border-radius: 15px;
+}
+
+button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+ }
+
+#root{
+	display: flex;
+	justify-content: center;
+}
+
+.App {
+	position: relative;
+	width: 800px;
+	height: 80px;
+}
+
+.user {
+	margin-top: 15px;
+	border: 2px solid black;
+	font-size: 20px;
+	.user__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+		div{
+			min-width: 200px;
+		}
+		span{
+			display: inline-block;
+			border: 1px solid black;
+			height: 80px;
+		}
+	}
+}
+
+.myBtn{
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	box-sizing: border-box;
+	padding: 15px;
+	font-size: 20px;
+
+	background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+	 border-radius: 5px;
+	:hover{
+		background-color: #4CAF50; /* Green */
+		color: white;
+	}
+}
+
+.myInp {
+	width: 150px;
+	padding: 5px 15px;
+	margin: 20px;
+
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
