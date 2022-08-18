@@ -10,24 +10,29 @@ function User() {
 		{ name: 'Sanya', age: 20, gender: 'men', profession: 'program Men', id: 2 }
 	])
 
-	let [copyUsers, setCopyUsers] = useState([]);
+	let [copyUsers, setCopyUsers] = useState([
+		{ name: 'Vadim', age: 21, gender: 'men', profession: 'elder (/n ring)', id: 0 },
+		{ name: 'Danil', age: 20, gender: 'men', profession: 'future Jun Frontend', id: 1 },
+		{ name: 'Sanya', age: 20, gender: 'men', profession: 'program Men', id: 2 }
+	]);
 
 	const createUser = (newUser) => {
-		setUsers([...users, newUser]);
+		setCopyUsers([...copyUsers, newUser]);
+		cancelFilterUser();
 	}
 
-	const filterUser = (name) => {
-		setUsers(users.filter(u => u.name.includes(name)));
+	const filterUser = ({ name }) => {
+		setUsers(copyUsers.filter(u => u.name.includes(name)));
 	}
 
-	const cancelFilterUser = (copyUsers) => {
+	const cancelFilterUser = () => {
 		setUsers([...copyUsers]);
 	}
 
 	return (
 		<>
-			<UsersForm create={createUser} users={users} />
-			<UserList filter={filterUser} cancel={cancelFilterUser} users={users} copyUsers={copyUsers} setCopyUsers={setCopyUsers} title="Список пользователей" />
+			<UsersForm create={createUser} />
+			<UserList filter={filterUser} cancel={cancelFilterUser} users={users} title="Список пользователей" />
 		</>
 	);
 }
