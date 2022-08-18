@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function UsersForm({ create, users }) {
+function UsersForm({ create }) {
 
 	const [user, setUser] = useState({ name: '', age: '', gender: 'men', profession: '' });
 
@@ -9,7 +9,6 @@ function UsersForm({ create, users }) {
 		if ((user.name) && (user.age) && (user.gender) && (user.profession)) {
 			const newUser = {
 				...user,
-				id: users.length,
 			}
 			create(newUser);
 			setUser({ name: '', age: '', gender: 'men', profession: '' });
