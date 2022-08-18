@@ -1,37 +1,31 @@
 import React from "react";
 import { useState } from 'react';
 
-function UserFilter({ users, filter, cancel, copyUsers, setCopyUsers }) {
+function UserFilter({ filter, cancel }) {
 	const [filterName, setFilterName] = useState('');
-	const [children, setChildren] = useState('Открыть фильтр');
-	const [isFilter, setIsFilter] = useState(false);
+	const [filterVision, setFilterVision] = useState(false);
 
-	function checkFilterUser(filterName) {
-
-		if (!isFilter) {
-			setIsFilter(true);
-			setChildren('Применить фильтр');
-		} else {
-			if (filterName === '') {
-				cancel(copyUsers);
-				setChildren('Открыть фильтр');
-				setIsFilter(false);
-			} else {
-				setCopyUsers([...users]);
-				filter(filterName);
-				setFilterName('');
-				setChildren('Закрыть фильтр');
-			}
-		}
+	const handleFilter = () => filter({
+		name: filterName,
+	});
+	
+	const clearFilter = () => {
+		setFilterName('');
+		cancel();
 	}
+	
+	const toggleFilterVision = () => setFilterVision(!filterVision);
 
 	return (
 		<>
-			{isFilter
-				? <input className='myInp' value={filterName} onChange={e => setFilterName(e.target.value)} type='text' placeholder='Имя' />
-				: <> </>
-			}
-			<button className='myBtn' onClick={() => checkFilterUser(filterName)}>{children}</button>
+			{filterVision && (
+				<>
+			 		<input className='myInp' value={filterName} onChange={e => setFilterName(e.target.value)} type='text' placeholder='Имя' />
+					<button className='myBtn' onClick={handleFilter}>Применить фильтр</button>
+					<button className='myBtn' onClick={clearFilter}>Сбросить фильтр</button>
+			 	</>
+			)}
+			<button className='myBtn' onClick={toggleFilterViison}>{filterVision ? 'Закрыть фильтр' : 'Открыть фильтр'}</button>
 		</>
 	);
 }
