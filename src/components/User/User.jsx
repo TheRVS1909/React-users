@@ -17,7 +17,10 @@ function User() {
 	]);
 
 	const createUser = (newUser) => {
-		setCopyUsers([...copyUsers, newUser]);
+		setCopyUsers([...copyUsers, {
+			...newUser,
+			id: Date.now(),
+		}]);
 		cancelFilterUser();
 	}
 
